@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::app-head">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+	<div th:replace="fragments/navbar::app-navbar">
+	</div>
+
+	<div class="container-fluid py-5">
+		<div class="row">
+			<div th:insert="fragments/sidebar::dashboard" class="col-md-3">
+			</div>
+			<div class="col-md-9">
+			  <h1>Dash Board</h1>
+			  <div class="row">
+			  	<div class="col-md-3 bg-primary rounded">
+			  	<h1 th:text="${userCount}" class="text-white mt-3">150</h1>
+			  	<p class="text-white mb-4">Users<i style="font-size:300%" class="fas fa-user float-right mb-3"></i></p>
+			  	</div>
+			  
+			  	<div class="col-md-3 bg-success mx-3 rounded">
+			  	<h1 th:text="${productCount}" class="text-white mt-3">150</h1>
+			  	<p class="text-white mb-4">Products<i style="font-size:300%" class="fas fa-bookmark float-right mb-3"></i></p>
+			  	</div>
+			  	
+			  	<div class="col-md-3 bg-warning rounded">
+			  	<h1 th:text="${orderCount}" class=" mt-3">150</h1>
+			  	<p class=" mb-4">Orders<i style="font-size:300%" class="fas fa-shopping-bag float-right mb-3"></i></p>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

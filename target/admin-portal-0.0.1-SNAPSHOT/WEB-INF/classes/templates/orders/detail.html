@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::app-head">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:replace="fragments/navbar::app-navbar"></div>
+	<div class="container-fluid py-5">
+		<div class="row">
+			<div th:insert="fragments/sidebar::orders" class="col-md-3">
+			</div>
+			<div class="col-md-9">
+				<div class="card">
+					<div class="card-header">
+						<h1 th:text="'Order ID:'+${order.id} "class="h4 mb-0">
+							Order Management
+						</h1>
+					</div>
+					<div class="card-body">
+					<p th:text="'Customer:'+${order.user.username}">
+					<p th:text="'Address:'+${order.address}">
+					
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Product Name</th>
+									<th scope="col">Unit Price</th>
+									<th scope="col">Sub Total</th>
+							
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="orderItem:${order.orderItems}">
+									<td th:text="${orderItem.product.name}" scope="row"></thd>
+									<td th:text="${orderItem.product.price}"></td>
+									<td th:text="${orderItem.subtotal}"></td>
+									</tr>
+									<tr>
+									<td></td>
+									<td></td>
+									<th th:text="${order.total}"></th>
+									</tr>
+									<tr>
+									<td></td>
+									<td></td>
+									<th><a  class="btn btn-primary" th:href="@{/orders/delete(id=${order.id})}">Deliever</a></th>
+									
+									</tr>
+							</tbody>
+						</table>
+
+						<!-- Pagination 
+						<nav aria-label="Page navigation example">
+						    
+							<ul  class="pagination justify-content-center">
+								<li class="page-item" th:classappend="${products.number==0}?disabled">
+								  <a class="page-link" th:href="@{/products(page=${products.number-1})}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+								</li>
+								<li th:each="pageNumber:${pageNumbers}" class="page-item" th:classappend="${pageNumber-1==products.number}?active"><a th:text="${pageNumber}" class="page-link" th:href="@{/products(page=${pageNumber-1})}"></a></li>
+								<li class="page-item" th:classappend="${products.number+1==products.totalPages}?disabled">
+								  <a class="page-link" th:href="@{/products(page=${products.number+1})}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+								</li>
+								
+							</ul>
+							
+						</nav>-->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:href="@{/js/jquery-3.3.1.slim.min.js}"></script>
+	<script type="text/javascript" th:href="@{/js/popper.min.js}"></script>
+	<script type="text/javascript" th:href="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
